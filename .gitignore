@@ -1,0 +1,12 @@
+# Databases
+*.db
+*.sqlite3
+
+# Logs and Data dumps
+*.log
+*.csv
+estudiantes.txt
+
+# OS metadata
+.DS_Store
+Thumbs.db
