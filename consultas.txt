@@ -1,0 +1,10 @@
+.
+├── consultas.txt
+├── datos
+│   └── public
+│       └── logs
+│           └── servidor_v1.log
+└── scripts
+    └── backup.sh
+
+5 directories, 3 files

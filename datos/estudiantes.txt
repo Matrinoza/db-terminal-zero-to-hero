@@ -1,0 +1,6 @@
+id,nombre,edad
+1,Ana,22
+2,Carlos,25
+3,Lucia,21
+4,Lautaro,20
+5,Genaro,30
