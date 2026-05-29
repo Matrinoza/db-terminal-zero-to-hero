@@ -15,3 +15,17 @@ Antes de sumergirse en los motores de bases de datos estructuradas (SQL), este p
 * Manejo de la arquitectura básica de archivos y redirección usando echo >>.
 * Implementación de la conversión de tipos de datos numéricos en awk mediante evaluación aritmética (0+$3 > 20).
 * Creación de tuberías con múltiples comandos CLI usando el pipe de Unix (|) para simular consultas estructurales.
+
+## 📂 Estructura del Repositorio
+```text
+db-terminal-zero-to-hero/
+├── .gitignore          # Excluye bases de datos locales, volcados de datos y logs
+├── README.md           # Documentación en Inglés (Principal)
+├── README.es.md        # Documentación en Español (Espejo)
+├── consultas.txt       # Notas de prácticas iniciales
+├── datos/              # Directorio de entorno de datos
+│   └── public/
+│       └── logs/
+│           └── servidor_v1.log
+└── scripts/            # Directorio de scripts de automatización
+    └── backup.sh
