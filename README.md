@@ -13,3 +13,17 @@ Before diving into structured database engines (SQL), this project explores how 
 * Handled basic file architecture and redirection using `echo >>`.
 * Implemented numerical data-type casting in `awk` using arithmetic evaluation (`0+$3 > 20`).
 * Pipelined multiple CLI commands using the Unix pipe (`|`) to simulate structural queries.
+
+## 📂 Repository Structure
+```text
+db-terminal-zero-to-hero/
+├── .gitignore          # Excludes local databases, data dumps, and logs
+├── README.md           # English documentation (Main)
+├── README.es.md        # Spanish documentation (Mirror)
+├── consultas.txt       # Initial practice notes
+├── datos/              # Data playground directory
+│   └── public/
+│       └── logs/
+│           └── servidor_v1.log
+└── scripts/            # Automation scripts directory
+    └── backup.sh
