@@ -1,10 +1,43 @@
-.
-├── consultas.txt
-├── datos
-│   └── public
-│       └── logs
-│           └── servidor_v1.log
-└── scripts
-    └── backup.sh
+======================================================================
+DAY 2 LOG: ENTERING THE RELATIONAL ENGINE / LOG DEL DÍA 2: ENTRANDO AL MOTOR RELACIONAL
+======================================================================
 
-5 directories, 3 files
+[EN] ENGLISH VERSION
+----------------------------------------------------------------------
+Task: Initialize a structured database and run native SQL statements via CLI.
+Engine: SQLite 3
+
+1. Database Initialization
+$ sqlite3 escuela.db
+
+2. Table Creation (Schema deployment)
+sqlite> .read esquema.sql
+
+3. Data Ingestion (SQL INSERT)
+sqlite> INSERT INTO students (name, age) VALUES ('Ana', 22), ('Carlos', 25), ('Lucia', 21), ('Lautaro', 20), ('Genaro', 30);
+
+4. Data Selection & Filtering (SQL SELECT + WHERE)
+sqlite> .mode column
+sqlite> .headers on
+sqlite> SELECT name FROM students WHERE age > 20;
+
+----------------------------------------------------------------------
+[ES] VERSIÓN EN ESPAÑOL
+----------------------------------------------------------------------
+Tarea: Inicializar una base de datos estructurada y ejecutar sentencias SQL nativas vía CLI.
+Motor: SQLite 3
+
+1. Inicialización de la Base de Datos
+$ sqlite3 escuela.db
+
+2. Creación de Tablas (Despliegue del Esquema)
+sqlite> .read esquema.sql
+
+3. Ingesta de Datos (SQL INSERT)
+sqlite> INSERT INTO students (name, age) VALUES ('Ana', 22), ('Carlos', 25), ('Lucia', 21), ('Lautaro', 20), ('Genaro', 30);
+
+4. Selección y Filtrado de Datos (SQL SELECT + WHERE)
+sqlite> .mode column
+sqlite> .headers on
+sqlite> SELECT name FROM students WHERE age > 20;
+======================================================================
