@@ -41,3 +41,41 @@ sqlite> .mode column
 sqlite> .headers on
 sqlite> SELECT name FROM students WHERE age > 20;
 ======================================================================
+
+======================================================================
+DAY 3 LOG: DATA MUTATION & DELETION (CRUD COMPLETION) / LOG DEL DÍA 3: MUTACIÓN Y ELIMINACIÓN
+======================================================================
+
+[EN] ENGLISH VERSION
+----------------------------------------------------------------------
+Task: Safely modify and delete records using standard SQL clauses.
+Engine: SQLite 3
+
+1. Data Mutation (UPDATE)
+Correct syntax discovered through iterative debugging:
+sqlite> UPDATE students SET name = 'Lautaro', age = 21 WHERE id = 4;
+
+2. Data Deletion (DELETE)
+sqlite> DELETE FROM students WHERE id = 3;
+
+3. Concept Learned: One-Liner Execution
+Databases can be queried directly from the OS shell (Bash) without entering the interactive prompt:
+$ sqlite3 -column -header escuela.db "SELECT * FROM students;"
+
+----------------------------------------------------------------------
+[ES] VERSIÓN EN ESPAÑOL
+----------------------------------------------------------------------
+Tarea: Modificar y eliminar registros de forma segura usando cláusulas SQL estándar.
+Motor: SQLite 3
+
+1. Mutación de Datos (UPDATE)
+Sintaxis correcta descubierta mediante depuración iterativa:
+sqlite> UPDATE students SET name = 'Lautaro', age = 21 WHERE id = 4;
+
+2. Eliminación de Datos (DELETE)
+sqlite> DELETE FROM students WHERE id = 3;
+
+3. Concepto Aprendido: Ejecución en una línea (One-Liner)
+Las bases de datos pueden ser consultadas directamente desde la consola del SO (Bash) sin entrar al modo interactivo:
+$ sqlite3 -column -header escuela.db "SELECT * FROM students;"
+======================================================================
