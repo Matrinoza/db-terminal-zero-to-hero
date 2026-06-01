@@ -79,3 +79,43 @@ sqlite> DELETE FROM students WHERE id = 3;
 Las bases de datos pueden ser consultadas directamente desde la consola del SO (Bash) sin entrar al modo interactivo:
 $ sqlite3 -column -header escuela.db "SELECT * FROM students;"
 ======================================================================
+
+======================================================================
+DAY 4 LOG: BASH AUTOMATION & DYNAMIC REPORTS / LOG DEL DÍA 4: AUTOMATIZACIÓN Y REPORTES DINÁMICOS
+======================================================================
+
+[EN] ENGLISH VERSION
+----------------------------------------------------------------------
+Task: Automate SQL queries using a Bash script and output the results to a dynamically named text file.
+
+1. Script Creation (reporte.sh)
+Using the SQLite one-liner approach, the script connects to the DB, orders students by age descending, and pipes the output.
+
+2. Troubleshooting: Standard Output (stdout) Redirection Issue
+- Issue: The initial script redirected EVERYTHING (including 'echo' statements) into the text file.
+- Root Cause: Improper placement of the redirection operator '>'.
+- Solution: Isolated the redirection operator ONLY to the execution line of the sqlite3 command. The 'echo' commands now correctly output to the terminal display.
+
+3. Dynamic File Naming
+Implemented command substitution in Bash to append the current execution date to the report filename:
+$ FECHA=$(date +%Y-%m-%d)
+$ sqlite3 ... > "reporte_edades_$FECHA.txt"
+
+----------------------------------------------------------------------
+[ES] VERSIÓN EN ESPAÑOL
+----------------------------------------------------------------------
+Tarea: Automatizar consultas SQL mediante un script Bash y enviar los resultados a un archivo de texto con nombre dinámico.
+
+1. Creación del Script (reporte.sh)
+Usando el enfoque de una sola línea de SQLite, el script se conecta a la BD, ordena los estudiantes por edad descendente y redirige la salida.
+
+2. Resolución de problemas (Troubleshooting): Redirección de Salida Estándar
+- Problema: El script inicial redirigía TODO (incluyendo los 'echo') dentro del archivo de texto.
+- Causa Raíz: Ubicación incorrecta del operador de redirección '>'.
+- Solución: Se aisló el operador de redirección ÚNICAMENTE en la línea de ejecución del comando sqlite3. Ahora los 'echo' salen correctamente por la pantalla de la terminal.
+
+3. Nomenclatura Dinámica de Archivos
+Se implementó la sustitución de comandos en Bash para agregar la fecha de ejecución al nombre del archivo:
+$ FECHA=$(date +%Y-%m-%d)
+$ sqlite3 ... > "reporte_edades_$FECHA.txt"
+======================================================================
