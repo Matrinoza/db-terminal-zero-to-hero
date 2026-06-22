@@ -16,6 +16,10 @@ Antes de sumergirse en los motores de bases de datos estructuradas (SQL), este p
 * Implementación de la conversión de tipos de datos numéricos en awk mediante evaluación aritmética (0+$3 > 20).
 * Creación de tuberías con múltiples comandos CLI usando el pipe de Unix (|) para simular consultas estructurales.
 
+## 🛠️ Herramientas Personalizadas: NEXUS Logger
+Para optimizar el proceso de aprendizaje y mantener un registro forense de todas las interacciones con la base de datos, este repositorio incluye un script Bash personalizado:
+* **`grabar_practica.sh` (NEXUS):** Un script de registro avanzado que captura todos los comandos ejecutados, salidas estándar (stdout), errores (stderr) y códigos de salida. Detecta e ignora inteligentemente comandos de interfaces interactivas (como `vim` o el prompt de `sqlite3`) para evitar la corrupción de los registros, guardando todas las sesiones dinámicamente en un archivo log con fecha.
+
 ## 📂 Estructura del Repositorio
 ```text
 db-terminal-zero-to-hero/

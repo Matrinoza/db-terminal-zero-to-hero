@@ -1,0 +1,220 @@
+
+=========================================
+📅 FECHA: 2026-06-21
+=========================================
+
+[16:13:48] Comando Interactivo: sqlite3 escuela.db
+(Salida interactiva no registrada en el log)
+----------------------------------------
+
+[16:14:51] Comando Interactivo: sqlite3 -column -header escuela.db
+(Salida interactiva no registrada en el log)
+----------------------------------------
+
+[16:31:38] Comando Interactivo: sqlite3 -column -header escuela.db .backup /home/martin/Practicas/Backups/escula_backup.bak
+(Salida interactiva no registrada en el log)
+----------------------------------------
+
+[16:33:25] Comando Interactivo: sqlite3 -column -header escuela.db .backup /home/martin/Practicas/Backups/escula_backup.bak
+(Salida interactiva no registrada en el log)
+----------------------------------------
+
+[16:33:55] Comando: sqlite3 -column -header escuela.db .backup '/home/martin/Practicas/Backups/escula_backup.bak'
+----------------------------------------
+missing FILENAME argument on .backup
+
+[ESTADO: ERROR (Código de salida: 1)]
+----------------------------------------
+
+[16:35:48] Comando Interactivo: sqlite3 -column -header escuela.db
+(Salida interactiva no registrada en el log)
+----------------------------------------
+
+[17:33:48] Comando Interactivo: sqlite3 escuela.db
+(Salida interactiva no registrada en el log)
+----------------------------------------
+
+[17:45:27] Comando Interactivo: sqlite3 escuela.db
+(Salida interactiva no registrada en el log)
+----------------------------------------
+
+[17:52:13] Comando Interactivo: sqlite3 escuela.db
+(Salida interactiva no registrada en el log)
+----------------------------------------
+
+[17:57:15] Comando Interactivo: sqlite3 escuela.db
+(Salida interactiva no registrada en el log)
+----------------------------------------
+
+sqlite3 escuela.db
+[Nexus: Comando interactivo detectado. Ejecutando directamente sin registrar la salida...]
+SQLite version 3.51.2 2026-01-09 17:27:48
+Enter ".help" for usage hints.
+sqlite> .headers on
+sqlite> .mode column
+sqlite> SELECT * FROM alumnos;
+id  nombre             edad
+--  -----------------  ----
+1   Alejandro Gómez    15
+2   Sofía Rodríguez    14
+3   Mateo Fernández    16
+4   Valentina López    15
+5   Lucas Martínez     13
+6   Camila García      14
+7   Santiago Pérez     16
+8   Isabella González  15
+9   Matías Sánchez     14
+10  Mariana Romero     15
+11  Diego Torres       13
+12  Lucía Álvarez      16
+13  Nicolás Ramírez    14
+14  Daniela Ruiz       15
+15  Benjamín Díaz      13
+16  María José Castro  16
+17  Joaquín Morales    15
+18  Martina Herrera    14
+19  Tomás Medina       13
+20  Elena Flores       15
+21  Samuel Benítez     16
+22  Victoria Suárez    14
+23  Felipe Giménez     15
+24  Antonella Silva    13
+25  Bautista Ríos      16
+26  Zoe Mendoza        14
+27  Gabriel Ortiz      15
+28  Mia Navarro        13
+29  Emiliano Castillo  14
+30  Julieta Vargas     16
+sqlite> .backup "/home/martin/Practicas/Backups/escula_backup.bak"
+sqlite> UPDATE alumnos SET edad = 99;
+sqlite> SELECT * FROM alumnos;
+id  nombre             edad
+--  -----------------  ----
+1   Alejandro Gómez    99
+2   Sofía Rodríguez    99
+3   Mateo Fernández    99
+4   Valentina López    99
+5   Lucas Martínez     99
+6   Camila García      99
+7   Santiago Pérez     99
+8   Isabella González  99
+9   Matías Sánchez     99
+10  Mariana Romero     99
+11  Diego Torres       99
+12  Lucía Álvarez      99
+13  Nicolás Ramírez    99
+14  Daniela Ruiz       99
+15  Benjamín Díaz      99
+16  María José Castro  99
+17  Joaquín Morales    99
+18  Martina Herrera    99
+19  Tomás Medina       99
+20  Elena Flores       99
+21  Samuel Benítez     99
+22  Victoria Suárez    99
+23  Felipe Giménez     99
+24  Antonella Silva    99
+25  Bautista Ríos      99
+26  Zoe Mendoza        99
+27  Gabriel Ortiz      99
+28  Mia Navarro        99
+29  Emiliano Castillo  99
+30  Julieta Vargas     99
+sqlite> .restore "/home/martin/Practicas/Backups/escula_backup.bak"
+sqlite> SELECT * FROM alumnos;
+id  nombre             edad
+--  -----------------  ----
+1   Alejandro Gómez    15
+2   Sofía Rodríguez    14
+3   Mateo Fernández    16
+4   Valentina López    15
+5   Lucas Martínez     13
+6   Camila García      14
+7   Santiago Pérez     16
+8   Isabella González  15
+9   Matías Sánchez     14
+10  Mariana Romero     15
+11  Diego Torres       13
+12  Lucía Álvarez      16
+13  Nicolás Ramírez    14
+14  Daniela Ruiz       15
+15  Benjamín Díaz      13
+16  María José Castro  16
+17  Joaquín Morales    15
+18  Martina Herrera    14
+19  Tomás Medina       13
+20  Elena Flores       15
+21  Samuel Benítez     16
+22  Victoria Suárez    14
+23  Felipe Giménez     15
+24  Antonella Silva    13
+25  Bautista Ríos      16
+26  Zoe Mendoza        14
+27  Gabriel Ortiz      15
+28  Mia Navarro        13
+29  Emiliano Castillo  14
+30  Julieta Vargas     16
+sqlite> .exit
+Nexus-DB> fin
+
+🛑 Grabación detenida. ¡Sesión guardada en el archivo logs!
+Volviendo al menú de control. Escribe grabar para iniciar otra sesión o salir para salir.
+
+
+[18:04:45] Comando Interactivo: sqlite3 escuela.db SELECT * FROM alumnos LIMIT 2;
+----------------------------------------
+fin
+salir
+Error: in prepare, incomplete input
+
+----------------------------------------
+
+[18:12:15] Comando Interactivo: sqlite3 escuela.db
+----------------------------------------
+SQLite version 3.51.2 2026-01-09 17:27:48
+Enter ".help" for usage hints.
+[?2004hsqlite> .colum on
+[?2004lError: unknown command or invalid arguments:  "colum". Enter ".help" for help
+[?2004hsqlite> .colum on[K[K[K[K[K[K[K[Kheader on
+[?2004l[?2004hsqlite> .header on[K[K[K[K[K[K[K[K[Kmode column
+[?2004l[?2004hsqlite> s[KSELECT * FROM alumnos WHERE nombre LIKE ''L'%'
+[?2004l[?2004h   ...> ;
+[?2004lid  nombre          edad
+--  --------------  ----
+5   Lucas Martínez  13  
+12  Lucía Álvarez   16  
+[?2004hsqlite> ;SELECT * FROM alumnos WHERE nombre LIKE 'L%'[K[K[K[K[K[K[K[K[KEDAD[K[K[K[K[K[K[K[K[K[K[Kedad ve[K[KBETE[KWEEN 15[K14 [K[K[K4 ABD[K[KND 15;
+[?2004lid  nombre             edad
+--  -----------------  ----
+1   Alejandro Gómez    15  
+2   Sofía Rodríguez    14  
+4   Valentina López    15  
+6   Camila García      14  
+8   Isabella González  15  
+9   Matías Sánchez     14  
+10  Mariana Romero     15  
+13  Nicolás Ramírez    14  
+14  Daniela Ruiz       15  
+17  Joaquín Morales    15  
+18  Martina Herrera    14  
+20  Elena Flores       15  
+22  Victoria Suárez    14  
+23  Felipe Giménez     15  
+26  Zoe Mendoza        14  
+27  Gabriel Ortiz      15  
+29  Emiliano Castillo  14  
+[?2004hsqlite> SELECT * FROM alumnos WHERE edad BETWEEN 14 AND 15;[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[KCOUNT()*)0) )[1P)[1P)[C FROM alumnos[C[1@ [C[C[1@ [1@a[1P[1@A[1@S[C[C[1@ [1@t[1@o[1@t[1@a[1@l[1@_[1@a[1@l[1@u[1@m[1@n[1@o[1@s[C[C[C[C[C[C[C[C[C[C[C[C[C[C;
+[?2004ltotal_alumnos
+-------------
+30           
+[?2004hsqlite> SELECT COUNT(*) AS total_alumnos  FROM alumnos;[1P[1P[1P[1P[1P[1P[1P[1P[1@E[1@D[1@D[1@A[1P[1P[1P[1P[1@e[1@d[1@a[1@d[1@,[C[1@ [1@c[1@o[1@u[1@n[1@t[1P[1P[1P[1P[1P[1@C[1@O[1@N[1P[1@U[1@N[1@T[1@([1@)[1@*[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C ;G;R;U;[1P;O;U;P; ;B;Y; ;e;d;a;d;
+[?2004ledad  total_alumnos
+----  -------------
+13    6            
+14    8            
+15    9            
+16    7            
+[?2004hsqlite> .ext[Kit
+[?2004l
+----------------------------------------
+

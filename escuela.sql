@@ -1,0 +1,37 @@
+CREATE TABLE IF NOT EXISTS alumnos (
+    id INTEGER PRIMARY KEY,
+    nombre TEXT NOT NULL,
+    edad INTEGER NOT NULL
+);
+
+INSERT INTO alumnos (id, nombre, edad) VALUES
+(1, 'Alejandro Gómez', 15),
+(2, 'Sofía Rodríguez', 14),
+(3, 'Mateo Fernández', 16),
+(4, 'Valentina López', 15),
+(5, 'Lucas Martínez', 13),
+(6, 'Camila García', 14),
+(7, 'Santiago Pérez', 16),
+(8, 'Isabella González', 15),
+(9, 'Matías Sánchez', 14),
+(10, 'Mariana Romero', 15),
+(11, 'Diego Torres', 13),
+(12, 'Lucía Álvarez', 16),
+(13, 'Nicolás Ramírez', 14),
+(14, 'Daniela Ruiz', 15),
+(15, 'Benjamín Díaz', 13),
+(16, 'María José Castro', 16),
+(17, 'Joaquín Morales', 15),
+(18, 'Martina Herrera', 14),
+(19, 'Tomás Medina', 13),
+(20, 'Elena Flores', 15),
+(21, 'Samuel Benítez', 16),
+(22, 'Victoria Suárez', 14),
+(23, 'Felipe Giménez', 15),
+(24, 'Antonella Silva', 13),
+(25, 'Bautista Ríos', 16),
+(26, 'Zoe Mendoza', 14),
+(27, 'Gabriel Ortiz', 15),
+(28, 'Mia Navarro', 13),
+(29, 'Emiliano Castillo', 14),
+(30, 'Julieta Vargas', 16);
