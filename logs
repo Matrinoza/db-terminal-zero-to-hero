@@ -146,7 +146,14 @@ id  nombre             edad
 20  Elena Flores       15
 21  Samuel Benítez     16
 22  Victoria Suárez    14
-23  Felipe Giménez     15
+23  Felipe Giménez     15vim generar_reporte.py                                                                       I
+ ~/P/scripts   db-term..o-hero ±  chmod +x generar_reporte.py                                                                  I
+ ~/P/scripts   db-term..o-hero ±  python3 scripts/generar_reporte.py                                                           I
+python3: can't open file '/home/martin/Practicas/scripts/scripts/generar_reporte.py': [Errno 2] No such file or directory
+ ✘  ~/P/scripts   db-term..o-hero ±  chmod 777 generar_reporte.py                                                             I
+ ~/P/scripts   db-term..o-hero ±  python3 scripts/generar_reporte.py                                                           I
+python3: can't open file '/home/martin/Practicas/scripts/scripts/generar_reporte.py': [Errno 2] No such file or directory
+
 24  Antonella Silva    13
 25  Bautista Ríos      16
 26  Zoe Mendoza        14
@@ -173,18 +180,18 @@ Error: in prepare, incomplete input
 ----------------------------------------
 SQLite version 3.51.2 2026-01-09 17:27:48
 Enter ".help" for usage hints.
-[?2004hsqlite> .colum on
-[?2004lError: unknown command or invalid arguments:  "colum". Enter ".help" for help
-[?2004hsqlite> .colum on[K[K[K[K[K[K[K[Kheader on
-[?2004l[?2004hsqlite> .header on[K[K[K[K[K[K[K[K[Kmode column
-[?2004l[?2004hsqlite> s[KSELECT * FROM alumnos WHERE nombre LIKE ''L'%'
-[?2004l[?2004h   ...> ;
-[?2004lid  nombre          edad
+sqlite> .colum on
+Error: unknown command or invalid arguments:  "colum". Enter ".help" for help
+sqlite> .header on
+sqlite> .mode column
+sqlite> SELECT * FROM alumnos WHERE nombre LIKE 'L%'
+   ...> ;
+id  nombre          edad
 --  --------------  ----
 5   Lucas Martínez  13  
 12  Lucía Álvarez   16  
-[?2004hsqlite> ;SELECT * FROM alumnos WHERE nombre LIKE 'L%'[K[K[K[K[K[K[K[K[KEDAD[K[K[K[K[K[K[K[K[K[K[Kedad ve[K[KBETE[KWEEN 15[K14 [K[K[K4 ABD[K[KND 15;
-[?2004lid  nombre             edad
+sqlite> SELECT * FROM alumnos WHERE edad BETWEEN 14 AND 15;
+id  nombre             edad
 --  -----------------  ----
 1   Alejandro Gómez    15  
 2   Sofía Rodríguez    14  
@@ -203,18 +210,174 @@ Enter ".help" for usage hints.
 26  Zoe Mendoza        14  
 27  Gabriel Ortiz      15  
 29  Emiliano Castillo  14  
-[?2004hsqlite> SELECT * FROM alumnos WHERE edad BETWEEN 14 AND 15;[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[KCOUNT()*)0) )[1P)[1P)[C FROM alumnos[C[1@ [C[C[1@ [1@a[1P[1@A[1@S[C[C[1@ [1@t[1@o[1@t[1@a[1@l[1@_[1@a[1@l[1@u[1@m[1@n[1@o[1@s[C[C[C[C[C[C[C[C[C[C[C[C[C[C;
-[?2004ltotal_alumnos
+sqlite> SELECT COUNT(*) AS total_alumnos  FROM alumnos;
+total_alumnos
 -------------
 30           
-[?2004hsqlite> SELECT COUNT(*) AS total_alumnos  FROM alumnos;[1P[1P[1P[1P[1P[1P[1P[1P[1@E[1@D[1@D[1@A[1P[1P[1P[1P[1@e[1@d[1@a[1@d[1@,[C[1@ [1@c[1@o[1@u[1@n[1@t[1P[1P[1P[1P[1P[1@C[1@O[1@N[1P[1@U[1@N[1@T[1@([1@)[1@*[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C ;G;R;U;[1P;O;U;P; ;B;Y; ;e;d;a;d;
-[?2004ledad  total_alumnos
+sqlite> SELECT edad, COUNT(*) AS total_alumnos  FROM alumnos GROUP BY edad;
+edad  total_alumnos
 ----  -------------
 13    6            
 14    8            
 15    9            
 16    7            
-[?2004hsqlite> .ext[Kit
-[?2004l
+sqlite> .exit
+
+----------------------------------------
+
+
+=========================================
+📅 FECHA: 2026-06-22
+=========================================
+
+[16:31:27] Comando Interactivo: sqlite3 escuela.db
+----------------------------------------
+
+----------------------------------------
+
+[16:42:47] Comando: cd Practicas/scripts
+----------------------------------------
+./grabar_practica.sh: línea 174: cd: Practicas/scripts: No existe el fichero o el directorio
+
+[ESTADO: ERROR (Código de salida: 1)]
+----------------------------------------
+
+[16:42:52] Comando: ls
+----------------------------------------
+backup.sh
+escuela.db
+grabar_practica.sh
+limpiar_log_test.py
+pty_recorder.py
+reportes.sh
+
+[ESTADO: OK (Código de salida: 0)]
+----------------------------------------
+
+[16:43:12] Comando: touch generar_reporte.py
+----------------------------------------
+
+[ESTADO: OK (Código de salida: 0)]
+----------------------------------------
+
+[16:43:13] Comando: ls
+----------------------------------------
+backup.sh
+escuela.db
+generar_reporte.py
+grabar_practica.sh
+limpiar_log_test.py
+pty_recorder.py
+reportes.sh
+
+[ESTADO: OK (Código de salida: 0)]
+----------------------------------------
+
+[16:43:25] Comando: vim generar_reporte.py
+----------------------------------------
+Vim: Advertencia: la salida no es un terminal
+"generar_reporte.py" 0L, 0B1                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                       NORMAL  generar_reporte.py                                                        unix | utf-8 | python  100%    0:0  i  INSERT  generar_reporte.py                                                        unix | utf-8 | python  100%    0:1  s| +                                                                                   1:2a3d4 SupportsAdd~ _typeshed                C [LS]  SupportsRAdd~ _typeshed               C [LS]  SupportsRead~ _typeshed               C [LS]  SupportsReadline~ _typeshed           C [LS]  SupportsLenAndGetItem~ _typeshed      C [LS]  SupportsKeysAndGetItem~ _typeshed     C [LS]  staticmethod                          C [LS]  SupportsNoArgReadline~ _typeshed      C [LS]  SupportsContainsAndGetItem~ _typeshed C [LS] from _typeshed import SupportsAdd                                    NORMAL  generar_reporte.py | +                                                    unix | utf-8 | python  100%    1:3                                                                                   
+~                                                
+~                                                
+~                                                
+~                                                
+~                                                
+~                                                
+~                                                
+:COMMAND  generar_reporte.py | + ned (Pyright reportUndefinedVariable)                        ──────────────────────────────────────────────────────────────────────────────https://github.com/microsoft/pyright/blob/main/docs/configuration.            md#reportUndefinedVariable                                                    ──────────────────────────────────────────────────────────────────────────────Expression value is unused (Pyright reportUnusedExpression)                   ──────────────────────────────────────────────────────────────────────────────https://github.com/microsoft/pyright/blob/main/docs/configuration.            md#reportUnusedExpression                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     :                                                                                                             
+"generar_reporte.py" 1L, 4B escritos
+
+[ESTADO: OK (Código de salida: 0)]
+----------------------------------------
+
+[16:43:52] Comando: vim generar_reporte.py
+----------------------------------------
+Vim: Advertencia: la salida no es un terminal
+"generar_reporte.py" 1L, 4B1   sad                                                                                                                ~                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                      ~                                                                                                                       NORMAL  generar_reporte.py                                                        unix | utf-8 | python  100%    1:3  ^[  ^[  
+[ESTADO: OK (Código de salida: 0)]
+----------------------------------------
+
+[17:02:12] Comando: python3 generar_reporte-py
+----------------------------------------
+python3: can't open file '/home/martin/Practicas/scripts/generar_reporte-py': [Errno 2] No such file or directory
+
+[ESTADO: ERROR (Código de salida: 2)]
+----------------------------------------
+
+[17:02:16] Comando: python3 generar_reporte.py
+----------------------------------------
+Conectando a escuela.db...
+Cerrada
+Traceback (most recent call last):
+  File "/home/martin/Practicas/scripts/generar_reporte.py", line 18, in <module>
+    cursor.execuete(query)
+    ^^^^^^^^^^^^^^^
+AttributeError: 'sqlite3.Cursor' object has no attribute 'execuete'. Did you mean: 'execute'?
+
+[ESTADO: ERROR (Código de salida: 1)]
+----------------------------------------
+
+[17:04:11] Comando: python3 generar_reporte.py
+----------------------------------------
+Conectando a escuela.db...
+Datos extraídos correctamente. Procesando 4 grupos de edades...
+Conexión cerrada.
+Traceback (most recent call last):
+  File "/home/martin/Practicas/scripts/generar_reporte.py", line 37, in <module>
+    with open(ruta_json, 'w') as archivo_json:
+         ~~~~^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'datos/reporte_edades.json'
+
+[ESTADO: ERROR (Código de salida: 1)]
+----------------------------------------
+
+=========================================
+📅 FECHA: 2026-07-11
+=========================================
+
+[10:27:05] Comando: python3 scripts/generar_reporte.py
+----------------------------------------
+python3: can't open file '/home/martin/Practicas/scripts/scripts/generar_reporte.py': [Errno 2] No such file or directory
+
+[ESTADO: ERROR (Código de salida: 2)]
+----------------------------------------
+
+[10:29:01] Comando: cd ..
+----------------------------------------
+
+[ESTADO: OK (Código de salida: 0)]
+----------------------------------------
+
+[10:29:03] Comando: python3 scripts/generar_reporte.py
+----------------------------------------
+Conectando a escuela.db...
+Datos extraídos correctamente. Procesando 4 grupos de edades...
+¡Éxito! El reporte se generó en datos/reporte_edades.json
+Conexión cerrada.
+
+[ESTADO: OK (Código de salida: 0)]
+----------------------------------------
+
+[10:31:23] Comando: cat datos/reporte_edades.json
+----------------------------------------
+[
+    {
+        "edad": 13,
+        "total_alumnos": 6
+    },
+    {
+        "edad": 14,
+        "total_alumnos": 8
+    },
+    {
+        "edad": 15,
+        "total_alumnos": 9
+    },
+    {
+        "edad": 16,
+        "total_alumnos": 7
+    }
+]
+[ESTADO: OK (Código de salida: 0)]
 ----------------------------------------
 

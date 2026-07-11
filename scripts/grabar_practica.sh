@@ -47,12 +47,12 @@ is_interactive_command() {
     local cmd="$1"
     local lower_cmd
     lower_cmd=$(echo "$cmd" | tr '[:upper:]' '[:lower:]')
-    
+
     # Comandos netamente interactivos / TUIs
     if [[ "$lower_cmd" =~ ^(vim|nano|emacs|less|more|top|htop|btop|glances|tmux|ssh|mosh|nmtui|harlequin|hql)$ ]]; then
         return 0
     fi
-    
+
     # Clientes de bases de datos ejecutados de forma interactiva (sin el query inline)
     if [[ "$lower_cmd" == "sqlite3"* ]] && [[ ! "$lower_cmd" =~ (\'|\"|\-cmd) ]]; then
         return 0
@@ -72,7 +72,7 @@ is_interactive_command() {
     if [[ "$lower_cmd" == "psql"* ]] && [[ ! "$lower_cmd" =~ (\'|\"|\-c\ ) ]]; then
         return 0
     fi
-    
+
     return 1
 }
 
@@ -90,42 +90,25 @@ while true; do
 
     # Leer el comando del usuario usando read con soporte readline (-e)
     read -e -p "$PROMPT_TEXT" CMD
-    
+
     # Eliminar espacios extras al inicio y al final
     CMD=$(echo "$CMD" | xargs)
-    
+
     # Si no se ingresó nada, continuar
     if [[ -z "$CMD" ]]; then
         continue
     fi
-    
+
     # Procesar comandos según el estado
-    if is_interactive_command "$CMD"; then
-            echo -e "${COLOR_SYSTEM}[Nexus: Comando interactivo detectado. Grabando sesión y salida...]${COLOR_RESET}"
-
-            # Registrar sólo el inicio del comando interactivo en el log
-            echo "[$CURRENT_TIME] Comando Interactivo: $CMD" >> "$LOG_FILE"
-            echo "----------------------------------------" >> "$LOG_FILE"
-
-            # ---> NUEVO FLUJO DE GRABACIÓN Y LIMPIEZA <---
-            RAW_TMP=$(mktemp)
-            CLEAN_TMP=$(mktemp)
-
-            # 1. Ejecutar a través del grabador PTY y guardar en un temporal
-            python3 /home/martin/Practicas/scripts/pty_recorder.py "$RAW_TMP" bash -c "$CMD"
-
-            # 2. Limpiar el archivo temporal usando el script de Python
-            python3 /home/martin/Practicas/scripts/limpiar_log.py "$RAW_TMP" "$CLEAN_TMP"
-
-            # 3. Volcar el texto limpio al log definitivo
-            cat "$CLEAN_TMP" >> "$LOG_FILE"
-
-            # 4. Limpiar archivos temporales de Arch Linux
-            rm -f "$RAW_TMP" "$CLEAN_TMP"
-            # ---------------------------------------------
-
-            # Registrar fin de la sesión interactiva
-            echo -e "\n----------------------------------------\n" >> "$LOG_FILE"
+    if [ "$RECORDING" = "false" ]; then
+        if [[ "$CMD" == "grabar" ]]; then
+            RECORDING=true
+            echo -e "\n${COLOR_SUCCESS}🟢 Grabación iniciada. Todos tus comandos se registrarán en logs.${COLOR_RESET}"
+            echo -e "Escribe ${COLOR_ERROR}fin${COLOR_RESET} para pausar o ${COLOR_ERROR}salir${COLOR_RESET} para cerrar el script.\n"
+            continue
+        elif [[ "$CMD" == "salir" ]]; then
+            echo -e "\n${COLOR_SUCCESS}👋 Saliendo de la consola Nexus. ¡Adiós!${COLOR_RESET}"
+            break
         else
             echo -e "${COLOR_ERROR}⚠️ Comando no reconocido en modo espera.${COLOR_RESET} Escribe ${COLOR_PROMPT}grabar${COLOR_RESET} para iniciar o ${COLOR_PROMPT}salir${COLOR_RESET} para finalizar."
             continue
@@ -140,7 +123,7 @@ while true; do
             echo -e "Volviendo al menú de control. Escribe ${COLOR_PROMPT}grabar${COLOR_RESET} para iniciar otra sesión o ${COLOR_PROMPT}salir${COLOR_RESET} para salir.\n"
             continue
         fi
-        
+
         if [[ "$CMD" == "salir" ]]; then
             echo -e "\n${COLOR_SUCCESS}🛑 Grabación detenida. ¡Sesión guardada en el archivo logs!${COLOR_RESET}"
             echo -e "${COLOR_SUCCESS}👋 Saliendo de la consola Nexus. ¡Adiós!${COLOR_RESET}"
@@ -148,15 +131,15 @@ while true; do
             history -w "$HIST_FILE"
             break
         fi
-        
+
         # Agregar comando al historial del script
         history -s "$CMD"
         history -w "$HIST_FILE"
-        
+
         # Obtener fechas y horas
         CURRENT_DATE=$(date +"%Y-%m-%d")
         CURRENT_TIME=$(date +"%H:%M:%S")
-        
+
         # Escribir el encabezado del día si cambió o si el archivo no existe o no tiene la fecha actual
         DATE_HEADER="📅 FECHA: $CURRENT_DATE"
         if [ ! -f "$LOG_FILE" ] || ! grep -q "^$DATE_HEADER$" "$LOG_FILE"; then
@@ -164,18 +147,18 @@ while true; do
             echo "$DATE_HEADER" >> "$LOG_FILE"
             echo -e "=========================================\n" >> "$LOG_FILE"
         fi
-        
+
         # Evaluar si el comando es interactivo
         if is_interactive_command "$CMD"; then
             echo -e "${COLOR_SYSTEM}[Nexus: Comando interactivo detectado. Grabando sesión y salida...]${COLOR_RESET}"
-            
+
             # Registrar sólo el inicio del comando interactivo en el log
             echo "[$CURRENT_TIME] Comando Interactivo: $CMD" >> "$LOG_FILE"
             echo "----------------------------------------" >> "$LOG_FILE"
-            
+
             # Ejecutar a través del grabador PTY para registrar entrada y salida interactiva
             python3 /home/martin/Practicas/scripts/pty_recorder.py "$LOG_FILE" bash -c "$CMD"
-            
+
             # Registrar fin de la sesión interactiva
             echo -e "\n----------------------------------------\n" >> "$LOG_FILE"
         else
@@ -183,20 +166,20 @@ while true; do
             # Registrar el comando en el log
             echo "[$CURRENT_TIME] Comando: $CMD" >> "$LOG_FILE"
             echo "----------------------------------------" >> "$LOG_FILE"
-            
+
             # Crear un archivo temporal para capturar salida y error de forma conjunta
             TMP_OUT=$(mktemp)
-            
+
             # Ejecutar el comando, capturando stdout y stderr en el archivo temporal
             eval "$CMD" > "$TMP_OUT" 2>&1
             EXIT_CODE=$?
-            
+
             # Mostrar el resultado en pantalla para el usuario
             cat "$TMP_OUT"
-            
+
             # Copiar el resultado al archivo de logs
             cat "$TMP_OUT" >> "$LOG_FILE"
-            
+
             # Registrar el código de salida y dar respuesta visual en terminal
             if [ $EXIT_CODE -eq 0 ]; then
                 STATUS_MSG="[ESTADO: OK (Código de salida: 0)]"
@@ -205,10 +188,10 @@ while true; do
                 STATUS_MSG="[ESTADO: ERROR (Código de salida: $EXIT_CODE)]"
                 echo -e "${COLOR_ERROR}✗ ERROR (Código: $EXIT_CODE)${COLOR_RESET}"
             fi
-            
+
             # Escribir el estado en el log
             echo -e "\n$STATUS_MSG\n----------------------------------------\n" >> "$LOG_FILE"
-            
+
             # Limpiar archivo temporal
             rm -f "$TMP_OUT"
         fi
